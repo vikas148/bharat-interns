@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSocket } from "../context/SocketProvider";
+import "./lobby.css"; // Import your custom CSS file
 
 const LobbyScreen = () => {
   const [email, setEmail] = useState("");
@@ -33,26 +34,32 @@ const LobbyScreen = () => {
   }, [socket, handleJoinRoom]);
 
   return (
-    <div>
-      <h1>Lobby</h1>
-      <form onSubmit={handleSubmitForm}>
-        <label htmlFor="email">Email ID</label>
+    <div className="lobby-container">
+      <h1 className="lobby-heading">Lobby</h1>
+      <form className="lobby-form" onSubmit={handleSubmitForm}>
+        <label className="lobby-label" htmlFor="email">
+          Email ID
+        </label>
         <input
+          className="lobby-input"
           type="email"
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <br />
-        <label htmlFor="room">Room Number</label>
+        <label className="lobby-label" htmlFor="room">
+          Room Number
+        </label>
         <input
+          className="lobby-input"
           type="text"
           id="room"
           value={room}
           onChange={(e) => setRoom(e.target.value)}
         />
         <br />
-        <button>Join</button>
+        <button className="lobby-button">Join</button>
       </form>
     </div>
   );
